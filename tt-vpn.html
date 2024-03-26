@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Konfigurasi VPN Server di Debian 10</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Logo TKJ .png" rel="icon">
+  <link href="assets/img/Logo TKJ .png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Logo TKJ .png" alt="">
+        <span>TKJ SMKBA</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="index.html">Beranda</a></li>
+           
+          <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="blog.html">Materi</a></li>
+              <li><a href="tt.html">Tutorial</a></li>
+              </ul>
+    
+
+          <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
+           
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="blog.html">Tutorial</a></li>
+          <li>DHCP Server</li>
+        </ol>
+        <h2>DHCP Server</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+              <div class="entry-img">
+                <img src="assets/img/blog/vpnn.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="blog-single.html">Cara Install dan Konfigurasi DHCP Server Pada Debian 10</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+
+                
+
+                <p>
+                  VPN adalah suatu koneksi antara satu jaringan dengan jaringan lainnya secara pribadi (private) melalui jaringan publik (internet).
+                </p>
+                
+                <p>DHCP Server merupakan solusi yang tepat digunakan pada jaringan komputer, dengan menggunakan DHCP Server Anda tidak perlu lagi mensetting IP Address satu per satu pada PC Client hal ini mempermudah kita sebagai Admin Jaringan komputer.&nbsp;</p>
+
+                <ol><li><strong>Virtual</strong>: hal yang tidak nyata atau semu, di dunia maya/ internet</li><li><strong>Private</strong>: hal yang sifatnya pribadi,&nbsp;tidak bisa diakses sembarang orang. Untuk menjaga kerahasiannya dari jaringan publik maka semua data akan di-enkripsi</li><li><strong>Network</strong>:&nbsp;jaringan koneksi yang saling terhubung</li></ol>
+
+                <p>Jadi, dari penjelasan di atas dapat disimpulkan bahwa pengertian VPN adalah hubungan atau koneksi yang terjadi secara virtual pada jaringan tertentu tanpa adanya koneksi riil yang terenkripsi.</p>
+                
+
+                <p>
+                  Cara Installasi dan konfigurasinya cukup mudah. Akan saya berikan sebuah tutorial installasi dan konfigurasinya dan saya di sini menggunakan software VirtualBox. Oke, Langsung saja ke tutorialnya.
+                </p>
+
+                <h3>Langkah-Langkah Konfigurasi VPN Server PPTPD Pada Debian Server</h3>
+                <p>
+                  1.	Langkah pertama, Install debian lalu ubah Adapter 1 jadi NAT dan Adapter 2 jadi Internal Network
+                </p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/1a-1.png" class="img-fluid" alt=""><br><br>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/2.png" class="img-fluid" alt=""><br><br>
+                <p>
+                  2.	Intall Iso Windows pada Virtual Box lalu Ubah Adapter 1 Internal Network
+                </p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/Screenshot-432.png" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  3.	Masuk debian dengan akun root kemudian ping 8.8.8.8 untuk cek ke internet terhubung tidak
+                </p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_42_24-768x576.png" class="img-fluid" alt=""><br><br>
+
+                 
+                  	<p>4. Tambah <strong>interface enp0s8</strong> dan <strong>IP </strong>dengan cara</p>
+                </p><p>Ketikkan Perintah : <strong>nano /etc/network/interfaces</strong></p>
+                <p><strong>auto enp0s8<br>iface enp0s8 inet static<br>address 192.168.1.1/24</strong></p>
+                <p><strong>auto enp0s8<br>iface enp0s8 inet static<br>address 192.168.1.1/24</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_43_07.png" class="img-fluid" alt=""><br><br>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_43_51-768x576.png" class="img-fluid" alt=""><br><br>
+
+                 
+                  <p>5.	Restart dengan mengetikkan perintah&nbsp;<strong>/sbin/shutdown -r now</strong></p>
+                 
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_44_17-1.png" class="img-fluid" alt=""><br><br>
+
+                <p>6. Masuk akun root lagi dan ketik&nbsp;<strong>ip a</strong>&nbsp;untuk memastikan interface jika dapat ip dan enp0s8 muncul</p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_46_19-768x576.png" class="img-fluid" alt=""><br><br>
+                
+
+                <p>7. Lalu Ketikkan&nbsp;<strong>nano /etc/apt/sources.list</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_49_00.png" class="img-fluid" alt=""><br><br>
+
+                <p>8. Masukkan repository nya dengan ketik</p>
+                <p><strong>deb http://kartolo.sby.datautama.net.id/debian/ buster main contrib non-free<br>deb http://kartolo.sby.datautama.net.id/debian/ buster-updates main contrib non-free<br>deb http://kartolo.sby.datautama.net.id/debian-security/ buster/updates main contrib non-free</strong></p>
+                <p>&nbsp;Save Tekan<strong> Ctrl + X</strong> lalu <strong>y</strong> dan <strong>Enter</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_55_01-768x576.png" class="img-fluid" alt=""><br><br>
+
+                <p>9.  Update debian dengan mengetik perintah&nbsp;<strong>apt-get update</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_55_15-768x576.png" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  10.	Jika sudah, keluar konfigurasi dan restart DHCP-nya dengan perintah “/etc/init.d/isc-dhcp-server restart”. Jika ada tulisan OK berarti konfigurasi nya berhasil, tapi jika FAILED coba cek lagi pada konfigurasi IP atau konfigurasi DHCP nya. Untuk merestart DHCP Server bisa juga dengan perintah "systemctl restart isc-dhcp-server.service".
+                </p>
+                <img src="assets/img/blog/ss11_LI.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>11. Masukkan perintah&nbsp;<strong>nano /etc/sysctl.conf</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_56_46.png" class="img-fluid" alt=""><br><br>
+
+                <p>12. Lalu Hapus tanda pagar (<strong>#</strong>) pada&nbsp;<strong>net.ipv4.ip_forward=1</strong>&nbsp;seperti gambar dibawah ini</p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_57_24-768x576.png" class="img-fluid" alt=""><br><br> 
+                 
+
+                <p>13. Selanjutnya kita Install PPTPD nya dengan mengetikkan perintah&nbsp;<strong>apt-get install pptpd</strong>&nbsp;lalu <strong>y</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_58_06-768x576.png" class="img-fluid" alt=""><br><br>
+
+                <p>14. Masukkan LOCAL IP dan REMOTE IP dengan perintah&nbsp;<strong>nano /etc/pptpd.conf</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_12_59_06.png" class="img-fluid" alt=""><br><br>
+
+                <p>15. Dan Hilangkan tanda pagar (<strong>#</strong>) pada localip dan remoteip kemudian ubah menjadi<br><strong>localip 10.10.10.1<br>remoteip 10.10.10.2-10</strong></p>
+                <p>&nbsp;Save Tekan<strong> Ctrl + X</strong> lalu <strong>y</strong> dan <strong>Enter</strong> </p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_13_06_57-768x576.png" class="img-fluid" alt=""><br><br>
+
+                <p>16. Masukkan <strong>ms</strong> dan <strong>dns</strong> dengan perintah&nbsp;<strong>nano /etc/ppp/pptpd-options</strong></p>
+                <p>
+                  Oke Demikian kira-kira tutorial Cara Install DHCP Server di Debian 10 ini. Semoga bermafaat untuk kita semua. Silahkan Share Jika kalian merasa postingan ini bermanfaat. Sekian & Terimakasih Salam.
+                </p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_13_07_43.png" class="img-fluid" alt=""><br><br>
+              
+                <p>17. Kemudian tambahkan tanda pagar (#) pada<br><strong>refuse-pap<br>refuse-chap<br>refuse-mschap</strong><br>Hilangkan pagar pada ms-dns dan ubah menjadi<br><strong>ms-dns 8.8.8.8<br>ms-dns 8.8.4.4</strong></p>
+                <p>&nbsp;Save Tekan<strong> Ctrl + X</strong> lalu <strong>y</strong> dan <strong>Enter</strong></p>
+                <p>Jika kurang jelas, Lihat pada Gambar dibawah ini!</p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_13_08_21-768x576.png" class="img-fluid" alt=""><br><br>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_13_08_48-768x576.png" class="img-fluid" alt=""><br><br>
+              
+                <p>18. Kemudian Buat <strong>user</strong> dan <strong>password</strong> dengan ketik perintah&nbsp;<strong>nano /etc/ppp/chap-secrets</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_13_09_26.png" class="img-fluid" alt=""><br><br>
+              
+                <p>19. Masukkan <span style="color:#00b2fe" class="has-inline-color">client</span>, <span style="color:#00b2fe" class="has-inline-color">server</span>, <span style="color:#00b2fe" class="has-inline-color">secret</span> dan <span style="color:#00b2fe" class="has-inline-color">IP addresses</span></p>
+                <p>Kemudian pada IP addresses ketikkan tanda bintang<strong>&nbsp;(*)</strong></p>
+                <p>&nbsp;Save Tekan<strong> Ctrl + X</strong> lalu <strong>y</strong> dan <strong>Enter</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_13_10_35.png" class="img-fluid" alt=""><br><br>
+
+                <p>20. Ketik perintah&nbsp;<strong>/etc/init.d/pptpd restart</strong>&nbsp;untuk merestart PPTPD</p>
+                <p>21. Selanjutnya cek pptpd dengan mengetik&nbsp;<strong>service pptpd status</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_13_11_38-768x576.png" class="img-fluid" alt=""><br><br>
+
+                <p>22. Masuk ke Windows 10 Virtual tadi lalu ubah ip nya menjadi&nbsp;<strong>192.168.1.2</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/Screenshot-423-768x590.png" class="img-fluid" alt=""><br><br>
+
+                <p>23. Kemudian buka ke cmd lalu ping kan ke&nbsp;<strong>192.168.1.1</strong>&nbsp;, pastikan windows sudah terhubung ke debiannya</p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/Screenshot-424-768x613.png" class="img-fluid" alt=""><br><br>
+
+                <p>24. Lalu Tambah VPN, caranya masuk ke <strong>Settings ➜ Network &amp; Internet ➜ VPN</strong> dan klik&nbsp;<strong>Add a VPN connection</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_13_09_26.png" class="img-fluid" alt=""><br><br>
+
+                <p>25. Pilih DropDown pada VPN Provider sebagai <strong>Windows (built-in)</strong></p>
+                
+
+                <p>Isi Connection Name (Bebas) sebagai contoh <strong>vpn alfar</strong></p>
+                 
+                <p>Isi Server name or address masukkan ip debian enp0s8 yaitu <strong>192.168.1.1</strong></p>
+                <p>Scroll lagi ke bawah</p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/Screenshot-427-768x610.png" class="img-fluid" alt=""><br><br>
+
+                <p>Pada VPN type kita pilih <strong>Point to Point Tunneling Protocol (PPTP)</strong></p>
+                <p>Pada Type of sign-in info pilih <strong>Username and password</strong></p>
+                <p>Pada Username dan Password masukkan Username yang sudah kita buat tadi</p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/Screenshot-428-768x595.png" class="img-fluid" alt=""><br><br>
+                <p>26. Jika sudah selesai maka akan jadi seperti ini</p>
+                <p>Lalu Klik&nbsp;<strong>Connect</strong>&nbsp;pada vpn alfar tersebut untuk menghubungkan dengan vpn nya</p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/Screenshot-429-768x609.png" class="img-fluid" alt=""><br><br>
+                <p>27. Buka cmd lalu ping ke 8.8.8.8 untuk mengecek terhubung internet tidak</p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/Screenshot-430-768x617.png" class="img-fluid" alt=""><br><br>
+                <p>Bisa dilihat pada gambar diatas, client belum terhubung ke internet jadi kita Masuk lagi ke Debian dan ketik perintah :</p>
+                <p><strong>iptables -I INPUT -p tcp –dport 1723 -m state –state NEW -j ACCEPT<br>iptables -I INPUT -p gre -j ACCEPT<br>iptables -t nat -I POSTROUTING -o enp0s3 -j MASQUERADE<br>iptables -I FORWARD -p tcp –tcp-flags SYN,RST SYN -s 10.10.10.0/24 -j TCPMSS –clamp-mss-to-pmtu</strong></p>
+                <p>28. Dan yang terahir Cek status pptpd nya dengan mengetikkan perintah&nbsp;<strong>service pptpd status</strong></p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/VirtualBox_debian-alfar-pptd_31_03_2021_13_42_58-1-768x576.png" class="img-fluid" alt=""><br><br>
+                <p>Jika sudah aktif lakukan cek internet lagi pada cilent nya dengan kembali Hubungkan windows ke vpn lalu buka cmd dan ping ke 8.8.8.8, kemudian ketikkan tracert 8.8.8.8 untuk mengetahui sumber internet</p>
+                <img src="http://alfarisy64.epizy.com/wp-content/uploads/2021/03/Screenshot-431-2-768x602.png" class="img-fluid" alt=""><br><br>
+                
+                
+                
+                <p>Selesai sudah cara membuat SERVER VPN PPTPD PADA DEBIAN 10</p>
+                <p>Jika dirasa kurang jelas bisa pakai cara yang kedua</p>
+                <center> <iframe width="300" height="200" src="https://www.youtube.com/embed/7vh5c6D2pAY?si=qNmAC1RNrUhB5saH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
+                <p>SAMPAI JUMPA DI POSTINGAN SELANJUTNYA TEMAN TEMAN </p>
+                
+              
+              </div>
+
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="#">Business</a></li>
+                </ul>
+
+                <i class="bi bi-tags"></i>
+                <ul class="tags">
+                  <li><a href="#">Creative</a></li>
+                  <li><a href="#">Tips</a></li>
+                  <li><a href="#">SMKBISA</a></li>
+                </ul>
+              </div>
+
+            </article><!-- End blog entry -->
+            <div class="blog-author d-flex align-items-center">
+              <img src="assets/img/logo1.png" class="rounded-circle float-left" alt="">
+              <div>
+                <h4>Hainif</h4>
+                <div class="social-links">
+                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                </div>
+                <p>
+                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                </p>
+              </div>
+            </div><!-- End blog author bio -->
+
+             
+
+          </div><!-- End blog entries list -->
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">Pencarian</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+              <h3 class="sidebar-title">Kategori</h3>
+              <div class="sidebar-item categories">
+                <ul>
+                  <li><a href="#">Umum <span>(25)</span></a></li>
+                  <li><a href="#">Komputer <span>(12)</span></a></li>
+                  <li><a href="#"> Jaringan<span>(22)</span></a></li>
+                  <li><a href="#">kreatif <span>(8)</span></a></li>
+                  <li><a href="#">Pendidikan<span>(14)</span></a></li>
+                </ul>
+              </div><!-- End sidebar categories-->
+
+              <h3 class="sidebar-title">Postingan Populer</h3>
+              <div class="sidebar-item recent-posts">
+                <div class="post-item clearfix">
+                  <img src="https://www.exabytes.co.id/blog/wp-content/uploads/2024/03/Apa-Itu-WordPress-Adalah.jpg" alt="">
+                  <h4><a href="tt-word.html">Cara install Wordpress di debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 27, 2024</time>
+                </div>
+                
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/sambaa.jpg" alt="">
+                  <h4><a href="tt-samba.html">Konfigurasi Samba Server di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/dns/bg.jpg" alt="">
+                  <h4><a href="tt-dns.html">Cara Install dan Konfigurasi DNS Server pada Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/apc.jpg" alt="">
+                  <h4><a href="tt-apache.html">Konfigurasi Web Server Apache di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="https://linuxways.net/wp-content/uploads/2023/08/how-to-install-webmin-on-debian-12-1020x600.jpg" alt="">
+                  <h4><a href="tt-webmin.html">Tutorial Install Webmin di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Nov 12, 2021</time>
+                </div>
+
+                
+
+              </div><!-- End sidebar recent posts-->
+
+              <h3 class="sidebar-title">Hastag</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><a href="#">IT</a></li>
+                  <li><a href="#">Windows</a></li>
+                  <li><a href="#">linux</a></li>
+                  <li><a href="#">Debian</a></li>
+                  <li><a href="#">Komputer</a></li>
+                  <li><a href="#">Jaringan</a></li>
+                  <li><a href="#">Teknologi</a></li>
+                  <li><a href="#">Komunikasi</a></li>
+                  <li><a href="#">ASJ</a></li> 
+                </ul>
+              </div><!-- End sidebar tags-->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+            <h4> </h4>
+            <p>     </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/Logo TKJ .png" alt="">
+              <span>TKJ SMKBA</span>
+            </a>
+            <p>Pusat Keunggulan & Pelatihan, Berdasar Imtaq dan Iptek, Berdaya saing Global dan Berwirausaha, Berprofil Pancasila.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Link Tautan</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Role</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Software Engineer</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Hubungi Kami</h4>
+            <p>
+              Jl.Plumbungan <br>
+              Jawa Timur 62192<br>
+              Indonesia <br><br>
+              <strong>Phone:</strong> (0322) 459140<br>
+              <strong>Email:</strong> smkn1baureno@gmail.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Hainif</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://www.instagram.com/hnifnipp/">Hanif</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

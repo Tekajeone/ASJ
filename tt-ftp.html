@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tutorial install FTP Server</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Logo TKJ .png" rel="icon">
+  <link href="assets/img/Logo TKJ .png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Logo TKJ .png" alt="">
+        <span>TKJ SMKBA</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="index.html">Beranda</a></li>
+           
+          <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="blog.html">Materi</a></li>
+              <li><a href="tt.html">Tutorial</a></li>
+              </ul>
+    
+
+          <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
+           
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li>FTP Server</li>
+        </ol>
+        <h2>FTP Server</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+              <div class="entry-img">
+                <img src="https://caraguna.com/wp-content/uploads/2022/02/ftp.jpg" alt="image" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="tt-ftp.html">Install dan Konfigurasi FTP Server di Debian 10</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+
+                <h3>Apa Itu FTP Server?</h3>
+                <p>
+                  FTP Server adalah suatu server yang menjalankan software yang berfungsi untuk memberikan layanan tukar menukar file dimana server tersebut selalu siap memberikan layanan FTP apabila mendapat permintaan (request) dari FTP client. Protokol ini juga sangat penting di dalam server anda apabila kita mau upload file bisa menggunakan service ini. Dan banyak lagi manfaat dari protokol ftp ini, dan di debian menyediakan 2 paket yang dapat menjadi ftp server yaitu proftpd dan vstpd. Keduan paket tersebut memiliki keistimewaan masing-masing dan disini saya mencontohkan yang proftpd. 
+                </p>
+
+                
+
+                <h3>Langkah-Langkah Instalasi dan Konfigurasi FTP dengan Filezilla</h3>
+                <div class="separator" style="clear: both; text-align: center;"><a href="assets/img/blogftp/ss1.PNG" width="320"></a></div>
+                <p>1. Login ke debian dengan menggunakan user root.</p>
+                <img src="assets/img/blogftp/ss1.PNG" class="img-fluid" alt=""><br><br>
+                
+
+                 
+ 
+
+
+                <p>2. Kemudian cek IP servernya, disini saya sudah men-settingnya.</p>
+                <img src="assets/img/blogftp/ss2_LI.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  3. Setelah itu install FTP nya dengan mengetikkan perintah
+                  <span style="background-color: #fcff01;"><b>apt-get install proftpd.</b></span> 
+                </p>
+                <img src="assets/img/blogftp/ss3_LI.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  4. Di sini saya ada pesan kesalahan atau error disebabkan saya belum memasukkan DVD binary 2.
+                </p>
+                <img src="assets/img/blogftp/ss4_LI.jpg" class="img-fluid" alt=""><br><br>
+                
+                <p>
+                <div class="separator" style="clear: both; text-align: left;">5. Kemudian masukkan DVD binary 2, dan ketikkan perintah <span style="background-color: #fcff01;"><b>apt-cdrom add.</b></span></div>
+              </p>
+              <img src="assets/img/blogftp/ss5.jpg" class="img-fluid" alt=""><br><br>
+
+              <p>
+                6. Jika sudah memasukkan DVD binary 2 ketikan
+                <span style="background-color: #fcff01;"><b> apt-get install proftpd</b></span>
+                jika ada pertanyaan 
+                <span style="background-color: #fcff01;"><b>"y/n"</b></span>
+                pilih 
+                <b style="background-color: #fcff01;">"y"</b>
+              </p>
+                <img src="assets/img/blogftp/ss6.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  7. Di sini setelah instalasi ada error code, jika ada error code tersebut ulangi perintah 
+                  <span style="background-color: #fcff01;"><b>apt-get install proftpd.</b></span>
+                  Tetapi jika tidak ada error code tidak usah untuk mengetikkan perintah tersebut lagi.
+                </p>
+                <img src="assets/img/blogftp/ss7.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  8. Setelah itu ada perintah untuk memperbaiki error code tersebut yaitu 
+                  <span style="background-color: #fcff01;"><b>apt --fix-broken install.</b></span>
+                </p>
+                <img src="assets/img/blogftp/ss8.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  9. Di sini saya disuruh untuk memasukkan DVD binary 1. Masukkan DVD binary 1 kemudian enter.
+                </p>
+                <img src="assets/img/blogftp/ss9.jpg" class="img-fluid" alt=""><br><br>
+                
+                <p>
+                  10. Jika sudah cek instalasi dengan mengetikkan perintah 
+                  <span style="background-color: #fcff01;"><b>apt-get install peroftpd.</b></span>
+                  Jika sudah ada tulisan&nbsp; 
+                  <span style="background-color: #fcff01;"><b>0 upgrade, 0 newly installed, 0 to remove and 0 not upgraded</b></span>
+                  . Jika sudah ada tulisan tersebut berarti sudah selesai.
+                </p>
+                <img src="assets/img/blogftp/ss10.jpg" class="img-fluid" alt=""><br><br>
+
+                 
+                <p>
+                  11. Kemudian masuk ke konfigurasi dengan mengetikkan perintah 
+                  <span style="background-color: #fcff01;"><b>nano /etc/proftpd/proftpd.conf</b></span>
+                </p>
+                <img src="assets/img/blogftp/ss11.jpg" class="img-fluid" alt=""><br><br> 
+             
+                <p>
+                  12. Kemudian cari kata DefaultRoot dan hilangkan tanda pagarnya. Jika sudah selesai konfigurasi jangan lupa untuk menyimpannya dengan mengetikkan tombol 
+                  <span style="background-color: #fcff01;"><b>Ctrl + O</b></span>
+                  dan keluar konfigurasi dengan mengetikkan perintah 
+                  <b style="background-color: #fcff01;">Ctrl + X</b>
+                </p>
+                <img src="assets/img/blogftp/ss12.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  13. Setelah itu restart konfigurasi FTP dengan mengetikkan perintah 
+                  <span style="background-color: #fcff01;"><b>/etc/init.d/proftpd restart.</b></span>
+                </p>
+                <img src="assets/img/blogftp/ss13.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  14. Sebelum mengujinya di browser kita setting IP terlebih dahulu PC client.
+                </p>
+                <img src="assets/img/blogftp/ss14.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  15. Setelah setting IP di PC client kita coba masuk ke browser dan ketikkan 
+                  <span style="background-color: #fcff01;"><b>ftp://IP server</b></span>
+                  . Karena IP server saya 192.168.10.1 jadi saya mengetikkan 
+                  <span style="background-color: white;">&nbsp;dan setelah itu kita disuruh untuk memasukkan username dan password. masukkan username dan password yang ada di server debian.</span>
+                  
+                </p> 
+                <img src="assets/img/blogftp/ss15.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  16. Jika sudah, maka kita berhasil masuk.
+                </p>
+                <img src="assets/img/blogftp/ss16.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  17. Kemudian coba untuk masuk dengan menggunakan software filezilla. masukkan hostname ip server, kemudian username dan passwordnya seperti username dan password yang ada di server debian kemudin untuk default&nbsp; port FTP yaitu port 21. Jika sudah berhasil maka tampilannya akan seperti dibawah ini.
+                </p>
+                <img src="assets/img/blogftp/ss17.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  Dan kita telah berhasil Konfigurasi FTP server dengan Login menggunakan username dan password
+                </p>
+                 
+
+                <p>
+                  Selanjutnya kita coba untuk login dengan menggunakan metode login anonymous yaitu login tanpa memasukkan username dan password.
+                </p>
+                
+
+                <p>
+                  1. Kembali ke server debian dan masuk ke konfigurasi FTP Server dengan mengetikkan perintah&nbsp;
+                  <span style="background-color: #fcff01;"><b>nano /etc/proftpd/proftpd.conf.</b></span>
+                  Setelah masuk konfigurasi cari kata Anonymous, kemudian hilangkan tanda pagar pada kata
+                  <div><span style="background-color: #fcff01;"><b>&lt;Anonymous ~ftp&gt;</b></span></div>
+                  <div><span style="background-color: #fcff01;"><b>User</b></span></div>
+                  <div><span style="background-color: #fcff01;"><b>Group</b></span></div>
+                  <div><span style="background-color: #fcff01;"><b>UserAlias</b></span></div>
+                  <div><span style="background-color: #fcff01;"><b>RequireValidShell</b></span></div>
+                  <div><span style="background-color: #fcff01;"><b>&lt;/Anonymous&gt;</b></span></div>
+                </p>
+                <img src="assets/img/blogftp/ss18.PNG" class="img-fluid" alt=""><br>  
+
+                <p>
+                  <center>Sebelum.</center>
+                </p>
+                <img src="assets/img/blogftp/ss18.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  <center>Sesudah.</center>
+                </p>
+                <img src="assets/img/blogftp/ss19.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  2. Jika sudah konfigurasi jangan lupa untuk merestart konfigurasi dengan mengetikkan perintah
+                  <span style="background-color: #fcff01;"><b>/etc/init.d/proftpd restart</b></span> 
+                </p>
+                <img src="assets/img/blogftp/ss20.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  3. Kemudian masuk ke browser pc client dan ketikkan
+                  <span style="background-color: #fcff01;"><b> ftp://192.168.10.1&nbsp;</b></span>
+                </p>
+                <img src="assets/img/blogftp/ss21.png" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  4. Dan jika berhasil kita bisa masuk tanpa memasukkan username dan password terlbih dahulu.
+                </p>
+                <img src="assets/img/blogftp/ss22.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  5. Kemudian kita coba masuk ke filezilla, dengan hanya memasukkan host dan port saja tidak perlu untuk memasukkan username dan password kemudian enter. Jika sudah berhassil maka hasilnya akan seperti dibawah ini.
+                </p>
+                <img src="assets/img/blogftp/ss23.PNG" class="img-fluid" alt=""><br><br>
+
+                <div><i style="background-color: white; box-sizing: border-box; color: #212529; font-family: Rubik, sans-serif; font-size: 16px;">Sekian tutorial dari saya semoga bermanfaat, dan terimakasih telah berkunjung di blog saya dan jangan 
+                  lupa kunjungi terus blog saya untuk mendapatkan informasi-informasi yang lebih bagus 
+                  lagi dan lebih bermanfaat.......</i><br>
+                  <div>
+                    <div class="separator" style="clear: both; text-align: center;"><br></div></div></div>
+
+                    
+              </div>
+
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="#">Business</a></li>
+                </ul>
+
+                <i class="bi bi-tags"></i>
+                <ul class="tags">
+                  <li><a href="#">Creative</a></li>
+                  <li><a href="#">Tips</a></li>
+                  <li><a href="#">SMKBISA</a></li>
+                </ul>
+              </div>
+
+            </article><!-- End blog entry -->
+
+            <div class="blog-author d-flex align-items-center">
+              <img src="assets/img/logo1.png" class="rounded-circle float-left" alt="">
+              <div>
+                <h4>Hainif</h4>
+                <div class="social-links">
+                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                </div>
+                <p>
+                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                </p>
+              </div>
+            </div><!-- End blog author bio -->
+
+             
+
+          </div><!-- End blog entries list -->
+
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">Pencarian</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+              <h3 class="sidebar-title">Kategori</h3>
+              <div class="sidebar-item categories">
+                <ul>
+                  <li><a href="#">Umum <span>(25)</span></a></li>
+                  <li><a href="#">Komputer <span>(12)</span></a></li>
+                  <li><a href="#"> Jaringan<span>(22)</span></a></li>
+                  <li><a href="#">kreatif <span>(8)</span></a></li>
+                  <li><a href="#">Pendidikan<span>(14)</span></a></li>
+                </ul>
+              </div><!-- End sidebar categories-->
+
+              <h3 class="sidebar-title">Postingan Populer</h3>
+              <div class="sidebar-item recent-posts">
+                <div class="sidebar-item recent-posts">
+                  <div class="post-item clearfix">
+                    <img src="assets/img/blog/sambaa.jpg" alt="">
+                    <h4><a href="tt-samba.html">Konfigurasi Samba Server di Debian 10</a></h4>
+                    <time datetime="2020-01-01">Mar 12, 2022</time>
+                  </div>
+  
+                  <div class="post-item clearfix">
+                    <img src="assets/img/dns/bg.jpg" alt="">
+                    <h4><a href="tt-dns.html">Cara Install dan Konfigurasi DNS Server pada Debian 10</a></h4>
+                    <time datetime="2020-01-01">Okt 27, 2022</time>
+                  </div>
+  
+                  <div class="post-item clearfix">
+                    <img src="assets/img/blog/apc.jpg" alt="">
+                    <h4><a href="tt-apache.html">Konfigurasi Web Server Apache di Debian 10</a></h4>
+                    <time datetime="2020-01-01">Jan 18, 2023</time>
+                  </div>
+  
+                  <div class="post-item clearfix">
+                    <img src="assets/img/blog/maill.jpg" alt="">
+                    <h4><a href="tt-mail.html">Tutorial Konfigurasi Mail Server dan Web mail...</a></h4>
+                    <time datetime="2020-01-01">Jan 22, 2024</time>
+                  </div>
+  
+                  <div class="post-item clearfix">
+                    <img src="https://www.exabytes.co.id/blog/wp-content/uploads/2024/03/Apa-Itu-WordPress-Adalah.jpg" alt="">
+                    <h4><a href="tt-word.html">Cara install Wordpress di debian 10</a></h4>
+                    <time datetime="2020-01-01">Jan 27, 2024</time>
+                  </div>
+                  
+              </div><!-- End sidebar recent posts-->
+
+              <h3 class="sidebar-title">Hastag</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><a href="#">IT</a></li>
+                  <li><a href="#">Windows</a></li>
+                  <li><a href="#">linux</a></li>
+                  <li><a href="#">Debian</a></li>
+                  <li><a href="#">Komputer</a></li>
+                  <li><a href="#">Jaringan</a></li>
+                  <li><a href="#">Teknologi</a></li>
+                  <li><a href="#">Komunikasi</a></li>
+                  <li><a href="#">ASJ</a></li> 
+                </ul>
+              </div><!-- End sidebar tags-->
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+            <h4> </h4>
+            <p>     </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/Logo TKJ .png" alt="">
+              <span>TKJ SMKBA</span>
+            </a>
+            <p>Pusat Keunggulan & Pelatihan, Berdasar Imtaq dan Iptek, Berdaya saing Global dan Berwirausaha, Berprofil Pancasila.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Link Tautan</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Role</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Software Engineer</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Hubungi Kami</h4>
+            <p>
+              Jl.Plumbungan <br>
+              Jawa Timur 62192<br>
+              Indonesia <br><br>
+              <strong>Phone:</strong> (0322) 459140<br>
+              <strong>Email:</strong> smkn1baureno@gmail.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Hainif</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://www.instagram.com/hnifnipp/">Hanif</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tutorial Install Webmin di Debian 10</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Logo TKJ .png" rel="icon">
+  <link href="assets/img/Logo TKJ .png" rel="apple-touch-icon">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Logo TKJ .png" alt="">
+        <span>TKJ SMKBA</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="index.html">Beranda</a></li>
+           
+          <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="blog.html">Materi</a></li>
+              <li><a href="tt.html">Tutorial</a></li>
+              </ul>
+    
+
+          <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
+           
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tt1.html">Tutorial</a></li>
+          <li>Webmin</li>
+        </ol>
+        <h2>Webmin</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+              <div class="entry-img">
+                <img src="https://linuxways.net/wp-content/uploads/2023/08/how-to-install-webmin-on-debian-12-1020x600.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="tt-webmin.html">Tutorial Install Webmin di Debian 10</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+
+                <H3>Apa itu Webmin? </H3>
+
+                <p>
+                    Webmin adalah alat konfigurasi sistem berbasis web untuk sistem Unix dan untuk versi terbaru juga dapat diinstal dan dijalankan pada Windows.Dengan Webmin mungkin untuk mengkonfigurasi internal sistem operasi, seperti pengguna, kuota disk, file konfigurasi, serta memodifikasi dan mengontrol aplikasi open source, seperti Apache HTTP Server, PHP atau MySQL.
+                </p>
+                
+                 
+
+                 
+                <p><h3>Fungsi Webmin</h3></p>  
+                <h5><b>Manajemen Pengguna dan Grup</b></h5>
+                <p>Webmin memungkinkan administrator untuk membuat, menghapus, serta mengelola pengguna serta grup pengguna di server. Ini mencakup pengaturan hak akses maupun kontrol keamanan.</p>
+                <h5><b>Konfigurasi Layanan Server</b></h5>
+                <p>Dengan Webmin, pengguna bisa mengonfigurasi berbagai layanan server seperti Apache, MySQL, dan Postfix. Pengaturan ini dapat diakses maupun diubah tanpa perlu memiliki pengetahuan mendalam tentang konfigurasi file teks.</p>
+                <h5><b>Monitoring Kinerja Server</b></h5>
+                <p>Webmin menyediakan alat untuk memantau kinerja server, termasuk penggunaan CPU, RAM, juga ruang disk. Ini membantu administrator untuk mendeteksi potensi masalah guna mengoptimalkan kinerja server.</p>
+                <h5><b>Manajemen File</b></h5>
+                <p>Administrator dapat mengelola file juga direktori secara mudah melalui antarmuka Webmin. Ini termasuk mengunggah, mengunduh, menghapus, serta mengedit file-file pada server.</p>
+                <h5><b>Instalasi dan Pembaruan Software</b></h5>
+                <p>Webmin memudahkan administrator untuk menginstal maupun memperbarui perangkat lunak pada server. Proses ini dapat dilakukan dengan beberapa klik tanpa harus menggunakan terminal.</p>
+                 
+                <h3>Kelebihan Webmin</h3>
+                <ul>
+                  <li><strong>Antarmuka Pengguna Intuitif</strong>: Webmin dirancang dengan antarmuka ramah pengguna nan intuitif, membuatnya mudah digunakan oleh administrator pemula sekalipun.</li>
+                  <li><strong>Dukungan untuk Banyak Layanan</strong>: Webmin kontrol panel mendukung konfigurasi untuk berbagai layanan server umum digunakan, termasuk Apache,  <strong>MySQL</strong>, PHP, juga lainnya.</li>
+                  <li><strong>Akses dari Jarak Jauh</strong>: Webmin memungkinkan administrator untuk mengakses atau mengelola server dari jarak jauh, memberikan fleksibilitas tinggi dalam administrasi server.</li>
+                  <li><strong>Komunitas dan Dukungan</strong>: Webmin memiliki komunitas yang aktif, sehingga pengguna dapat mencari bantuan, berbagi pengalaman, serta mendapatkan solusi untuk masalah mereka.</li>
+                  </ul>
+                  <h3>Kekurangan Webmin</h3>
+                  <ul>
+                    <li><strong>Keterbatasan Fitur pada Beberapa Layanan</strong>: Meskipun mendukung banyak layanan, Webmin mungkin memiliki keterbatasan dalam menyediakan fitur penuh untuk beberapa layanan tertentu dibandingkan dengan konfigurasi manual.</li>
+                    <li><strong>Potensi Keamanan</strong>: Seperti halnya  <strong>kontrol panel hosting</strong> lainnya, penggunaan Webmin harus dilakukan dengan hati-hati untuk menghindari potensi celah keamanan. Perlu menjaga keamanan server dengan melakukan pembaruan secara teratur.</li>
+                    <li><strong>Ketergantungan pada Antarmuka Web</strong>: Ketergantungan pada antarmuka web dapat menjadi kekurangan jika server mengalami masalah dan tidak dapat diakses melalui browser.</li>
+                    </ul>
+                <h3>Tutorial install webmin di debian 10 buster</h3><BR>
+                 
+                <center><iframe width="300" height="200" src="https://www.youtube.com/embed/B_zskho2MN8?si=vzhLwavi_PtyK1zL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
+
+                <h3>Kesimpulan</h3>
+                <p>
+                  Webmin kontrol panel merupakan alat sangat berguna dalam administrasi server, menyediakan antarmuka pengguna mudah digunakan nan efisien. Dengan fungsi mencakup manajemen pengguna, konfigurasi layanan server, monitoring kinerja, dan lainnya, Webmin memberikan solusi lengkap untuk administrator server. Namun, pengguna perlu memahami kelebihan maupun kekurangan kontrol panel ini, serta memastikan penggunaannya sesuai dengan kebutuhan maupun praktik keamanan terbaik. Dengan mengoptimalkan penggunaan Webmin, administrator dapat menjaga server dalam kondisi optimal serta mendukung kelancaran operasional bisnis online mereka.
+                </p>
+                <p>Oke Demikian tutorial Cara Install Webmin di Debian 10 ini. Semoga bermafaat untuk kita semua. Silahkan Share Jika kalian merasa postingan ini bermanfaat. Sekian & Terimakasih Salam.</p>
+              </div>
+
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="#">Business</a></li>
+                </ul>
+
+                <i class="bi bi-tags"></i>
+                <ul class="tags">
+                  <li><a href="#">Creative</a></li>
+                  <li><a href="#">Tips</a></li>
+                  <li><a href="#">SMKBISA</a></li>
+                </ul>
+              </div>
+
+            </article><!-- End blog entry -->
+
+            <div class="blog-author d-flex align-items-center">
+              <img src="assets/img/logo1.png" class="rounded-circle float-left" alt="">
+              <div>
+                <h4>Hainif</h4>
+                <div class="social-links">
+                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                </div>
+                <p>
+                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                </p>
+              </div>
+            </div><!-- End blog author bio -->
+
+             
+
+          </div><!-- End blog entries list -->
+
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">Pencarian</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+              <h3 class="sidebar-title">Kategori</h3>
+              <div class="sidebar-item categories">
+                <ul>
+                  <li><a href="#">Umum <span>(25)</span></a></li>
+                  <li><a href="#">Komputer <span>(12)</span></a></li>
+                  <li><a href="#"> Jaringan<span>(22)</span></a></li>
+                  <li><a href="#">kreatif <span>(8)</span></a></li>
+                  <li><a href="#">Pendidikan<span>(14)</span></a></li>
+                </ul>
+              </div><!-- End sidebar categories-->
+
+              <h3 class="sidebar-title">Postingan Populer</h3>
+              <div class="sidebar-item recent-posts">
+                <div class="post-item clearfix">
+                  <img src="https://www.exabytes.co.id/blog/wp-content/uploads/2024/03/Apa-Itu-WordPress-Adalah.jpg" alt="">
+                  <h4><a href="tt-word.html">Cara install Wordpress di debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 27, 2024</time>
+                </div>s
+
+                <div class="post-item clearfix">
+                  <img src="https://caraguna.com/wp-content/uploads/2022/02/ftp.jpg" alt="">
+                  <h4><a href="tt-ftp.html">Install dan Konfigurasi FTP Server di Debian 10</a></h4>
+                  <time datetime="2020-01-01"> Apr 21, 2022</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/vpnn.jpg" alt="">
+                  <h4><a href="tt-vpn.html">Knfigurasi VPN Server PPTPD di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/dns/bg.jpg" alt="">
+                  <h4><a href="tt-dns.html">Cara Install dan Konfigurasi DNS Server pada Debian 10</a></h4>
+                  <time datetime="2020-01-01">Mei 15, 2023</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/apc.jpg" alt="">
+                  <h4><a href="tt-apache.html">Konfigurasi Web Server Apache di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jun 13, 2023</time>
+                </div>
+
+              </div><!-- End sidebar recent posts-->
+
+              <h3 class="sidebar-title">Hastag</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><a href="#">IT</a></li>
+                  <li><a href="#">Windows</a></li>
+                  <li><a href="#">linux</a></li>
+                  <li><a href="#">Debian</a></li>
+                  <li><a href="#">Komputer</a></li>
+                  <li><a href="#">Jaringan</a></li>
+                  <li><a href="#">Teknologi</a></li>
+                  <li><a href="#">Komunikasi</a></li>
+                  <li><a href="#">ASJ</a></li> 
+                </ul>
+              </div><!-- End sidebar tags-->
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+            <h4> </h4>
+            <p>     </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/Logo TKJ .png" alt="">
+              <span>TKJ SMKBA</span>
+            </a>
+            <p>Pusat Keunggulan & Pelatihan, Berdasar Imtaq dan Iptek, Berdaya saing Global dan Berwirausaha, Berprofil Pancasila.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Link Tautan</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Role</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Software Engineer</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Hubungi Kami</h4>
+            <p>
+              Jl.Plumbungan <br>
+              Jawa Timur 62192<br>
+              Indonesia <br><br>
+              <strong>Phone:</strong> (0322) 459140<br>
+              <strong>Email:</strong> smkn1baureno@gmail.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Hainif</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://www.instagram.com/hnifnipp/">Hanif</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Konfigurasi DHCP Server debian 10</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Logo TKJ .png" rel="icon">
+  <link href="assets/img/Logo TKJ .png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Logo TKJ .png" alt="">
+        <span>TKJ SMKBA</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="index.html">Beranda</a></li>
+           
+          <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="blog.html">Materi</a></li>
+              <li><a href="tt.html">Tutorial</a></li>
+              </ul>
+    
+
+          <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
+           
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tt.html">Tutorial</a></li>
+          <li>DHCP Server</li>
+        </ol>
+        <h2>DHCP Server</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+              <div class="entry-img">
+                <img src="assets/img/blog/dhcpd.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="blog-single.html">Cara Install dan Konfigurasi DHCP Server Pada Debian 10</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+
+                
+
+                <p>
+                  <b>Dynamic Host Configuration Protocol atau DHCP Server</b> adalah Protocol yang berbasis Client/Server yang digunakan untuk mempermudah pengalokasian IP Address pada suatu Jaringan konputer. Untuk perangkat yang memberikan IP Address disebut sebagai DHCP Server, sedangkan untuk perangkat yang meminta IP Address disebut DHCP Client.
+                </p>
+                
+                <p>DHCP Server merupakan solusi yang tepat digunakan pada jaringan komputer, dengan menggunakan DHCP Server Anda tidak perlu lagi mensetting IP Address satu per satu pada PC Client hal ini mempermudah kita sebagai Admin Jaringan komputer.&nbsp;</p>
+
+                <p>Fungsi DHCP Server adalah sebuah layanan yang dapat memberikan secara automatis memberikan IP Address dan informasi Lain seperti Netmask, IP Gateway, IP DNS, Nama domain dll kepada Host yang memintanya.&nbsp;&nbsp;</p>
+
+                 
+                
+
+                <p>
+                  Cara Installasi dan konfigurasinya cukup mudah. Akan saya berikan sebuah tutorial installasi dan konfigurasinya dan saya di sini menggunakan software VirtualBox dengan network adapter Virtual Host Only. Oke, Langsung saja ke tutorialnya.
+                </p>
+
+                <h3>Langkah-Langkah Instalasi dan Konfigurasi DHCP Pada Debian Server</h3>
+                <p>
+                  1.	Langkah pertama, login ke debian dengan menggunakan user root.
+                </p>
+                <img src="assets/img/blog/ss1.png" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  2.	Setelah login dengan menggunakan user root, kita akan mengkonfigurasi IP untuk Server Debian-nya. Ketikkan perintah “nano /etc/network/interfaces” untuk masuk ke konfigurasi IP nya. Kemudian tulis konfigurasinya seperti gambar dibawah ini. Jika sudah keluar konfigurasi
+                   dengan menekan tombol Ctrl+O untuk menyimpan dan Ctrl+X untuk keluar konfigurasi.
+                </p>
+                <img src="assets/img/blog/ss2.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  3.	Kemudian restart networknya dengan perintah “/etc/init.d/networking restart”, kemudian cek IP nya dengan perintah “ip a”
+                </p>
+                <img src="assets/img/blog/ss3.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  4.	Setelah itu, masukkan DVD 2 ke PC Debian, Kemudian ketikkan perintah "apt-cdrom add". Setelah DVD berhasil dimasukkan kemudian tekan Enter. Selanjutnya update dengan perintah “apt-get update”.
+                </p>
+                <img src="assets/img/blog/ss4.png" class="img-fluid" alt=""><br><br>
+                <img src="assets/img/blog/ss5.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  5.	Selanjutnya install DHCP Server dengan perintah "apt-get install isc-dhcp-server" atau "apt install isc-dhcp-server", jika ada pertanyaan [y/n] tekan huruf “y” di keyboard kemudian enter. Tunggu sejenak dan sampai proses instalasi selesai.
+                </p>
+                <img src="assets/img/blog/ss6_LI.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  6.	Untuk memastikan DHCP sudah terinstal atau belum, kita masukkan perintah “apt install isc-dhcp-server”. Jika berhasil maka akan ada tulisan 0 upgrade, 0 newly installed, 0 to remove, and 0 not upgrade.
+                </p>
+                <img src="assets/img/blog/ss7_LI.jpg" class="img-fluid" alt=""><br><br>
+                
+
+                <p>
+                  7.	Setelah selesai menginstall DHCP Server-nya, sekarang kita masuk ke konfigurasi DHCP Servernya. Untuk masuk ke konfigurasi DHCP Server-nya, kita ketikkan perintah “nano /etc/dhcp/dhcpd.conf”. Lalu, untuk contoh gambarnya seperti dibawah ini. Gambar ini adalah konfigurasi defaultnya.
+                </p>
+                <img src="assets/img/blog/ss8_LI.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  8.	Kemudian kita akan mengubah konfigurasinya seperti contoh gambar di bawah ini yang diberi kotak merah baris 50-58. Jangan lupa hapus tanda pagar (#) nya. Kemudian setelah selesai dikonfigurasi, kita simpan konfigurasinya dengan tombol Ctrl+O dan keluar konfigurasi dengan tombol Ctrl+X. 
+                </p>
+                <img src="assets/img/blog/ss9_LI.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  9.	Kemudian kita konfigurasi interface pada “nano /etc/default/isc-dhcp-server”.  Kemudian pada INTERFACESv4 kita isikan dengan interface yang ada di server debian, karena di server debian saya interface nya enp0s3 jadi saya masukkan enp0s3.
+                </p>
+                <img src="assets/img/blog/ss10_LI.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  10.	Jika sudah, keluar konfigurasi dan restart DHCP-nya dengan perintah “/etc/init.d/isc-dhcp-server restart”. Jika ada tulisan OK berarti konfigurasi nya berhasil, tapi jika FAILED coba cek lagi pada konfigurasi IP atau konfigurasi DHCP nya. Untuk merestart DHCP Server bisa juga dengan perintah "systemctl restart isc-dhcp-server.service".
+                </p>
+                <img src="assets/img/blog/ss11_LI.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  11.   Cek status service dhcp server dan pastikan service berjalan dengan baik dengan perintah "systemctl status isc-dhcp-server.service". Jika sudah berjalan dengan baik seperti pada gambar dibawah ini, silahkan tekan CTRL + C untuk keluar dari status DHCP Server itu.
+                </p>
+                <img src="assets/img/blog/ss12.png" class="img-fluid" alt=""><br><br>
+
+                <p><h3>
+                  Pengujian DHCP Server</h3>
+                <p>
+                  12.	Kemudian langkah selanjutnya yaitu ke proses pengujian DHCP Server. Sebelum melakukan pengujian kita buka “Task Manager” terlebih dahulu pada client windows dengan cara ketik Task Manager di  bagian bawah pencarian windows. Setelah terbuka,  cari “VirtualBox DHCP Server” di bagian Process. Setelah ketemu batalkan prosesnya dengan cara klik kanana lalu pilih “End Task”. Sebagai contoh, perhatikan gambar dibawah ini. Kemudian jika sudah tutup jendela task manager.
+                </p>
+                <img src="assets/img/blog/ss13.png" class="img-fluid" alt=""><br><br> 
+                <center><img src="assets/img/blog/ss14.png" class="img-fluid" alt="Image" ><br><br></center>
+                <img src="assets/img/blog/ss15.png" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  13.	Lalu kita masuk ke “Network and Sharing Center” pada client windows. Disitu, klik pada bagian “Change adapter setting”. Kemudian kita klik yang “VirtualBox Host-Only Adapter.” Kemudian kita ubah konfigurasi IP nya menjadi seperti gamabar dibawah ini. Jika sudah, klik “Ok” lalu tutup semua jendela konfigurasinya. Setelah selesai mengkonfigurasi ulang IP-nya menjadi request IP otomatis dari DHCP Server atau meminta IP langsung dari DHCP Server.
+                </p>
+                <img src="assets/img/blog/ss16.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  14.	Kemudian kita “Disable” network adapter di VirtualBox tadi.
+                </p>
+                <img src="assets/img/blog/ss17.png" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  15.	Setelah “Disable” lalu kita “Enable” lagi. Tunggu sejenak, biarkan client windows meminta IP otomatis dari Server DHCPnya. Jika sudah mendapatkan IP otomatis, maka detail konfigurasi IP Client-nya akan menjadi seperti gambar dibawah ini yang diberi no.3
+                </p>
+                <img src="assets/img/blog/ss18.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  16.	Jika hasilnya seperti gambar diatas, berarti service DHCP server yang kita buat tadi telah selesai dan berjalan dengan baik. Ok, selamat mencoba!
+                </p> 
+                <p>
+                  Oke Demikian kira-kira tutorial Cara Install DHCP Server di Debian 10 ini. Semoga bermafaat untuk kita semua. Silahkan Share Jika kalian merasa postingan ini bermanfaat. Sekian & Terimakasih Salam.
+                </p>
+
+              </div>
+
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="#">Business</a></li>
+                </ul>
+
+                <i class="bi bi-tags"></i>
+                <ul class="tags">
+                  <li><a href="#">Creative</a></li>
+                  <li><a href="#">Tips</a></li>
+                  <li><a href="#">SMKBISA</a></li>
+                </ul>
+              </div>
+
+            </article><!-- End blog entry -->
+
+            <div class="blog-author d-flex align-items-center">
+              <img src="assets/img/logo1.png" class="rounded-circle float-left" alt="">
+              <div>
+                <h4>Hainif</h4>
+                <div class="social-links">
+                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                </div>
+                <p>
+                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                </p>
+              </div>
+            </div><!-- End blog author bio -->
+
+             
+
+          </div><!-- End blog entries list -->
+
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">Pencarian</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+              <h3 class="sidebar-title">Kategori</h3>
+              <div class="sidebar-item categories">
+                <ul>
+                  <li><a href="#">Umum <span>(25)</span></a></li>
+                  <li><a href="#">Komputer <span>(12)</span></a></li>
+                  <li><a href="#"> Jaringan<span>(22)</span></a></li>
+                  <li><a href="#">kreatif <span>(8)</span></a></li>
+                  <li><a href="#">Pendidikan<span>(14)</span></a></li>
+                </ul>
+              </div><!-- End sidebar categories-->
+
+              <h3 class="sidebar-title">Postingan Populer</h3>
+              <div class="sidebar-item recent-posts">
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/sshhh.jpg" alt="">
+                  <h4><a href="tt-remote.html">Konfigurasi SSH Server di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Des 16, 2021</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="https://caraguna.com/wp-content/uploads/2022/02/ftp.jpg" alt="">
+                  <h4><a href="tt-ftp.html">Install dan Konfigurasi FTP Server di Debian 10</a></h4>
+                  <time datetime="2020-01-01"> Apr 21, 2022</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/sambaa.jpg" alt="">
+                  <h4><a href="tt-samba.html">Konfigurasi Samba Server di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/dns/bg.jpg" alt="">
+                  <h4><a href="tt-dns.html">Cara Install dan Konfigurasi DNS Server pada Debian 10</a></h4>
+                  <time datetime="2020-01-01">Mei 15, 2023</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/apc.jpg" alt="">
+                  <h4><a href="tt-apache.html">Konfigurasi Web Server Apache di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jun 13, 2023</time>
+                </div>
+
+              </div><!-- End sidebar recent posts-->
+
+              <h3 class="sidebar-title">Hastag</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><a href="#">IT</a></li>
+                  <li><a href="#">Windows</a></li>
+                  <li><a href="#">linux</a></li>
+                  <li><a href="#">Debian</a></li>
+                  <li><a href="#">Komputer</a></li>
+                  <li><a href="#">Jaringan</a></li>
+                  <li><a href="#">Teknologi</a></li>
+                  <li><a href="#">Komunikasi</a></li>
+                  <li><a href="#">ASJ</a></li> 
+                </ul>
+              </div><!-- End sidebar tags-->
+              
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+   <!-- ======= Footer ======= -->
+   <footer id="footer" class="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+            <h4> </h4>
+            <p>     </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/Logo TKJ .png" alt="">
+              <span>TKJ SMKBA</span>
+            </a>
+            <p>Pusat Keunggulan & Pelatihan, Berdasar Imtaq dan Iptek, Berdaya saing Global dan Berwirausaha, Berprofil Pancasila.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Link Tautan</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Role</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Software Engineer</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Hubungi Kami</h4>
+            <p>
+              Jl.Plumbungan <br>
+              Jawa Timur 62192<br>
+              Indonesia <br><br>
+              <strong>Phone:</strong> (0322) 459140<br>
+              <strong>Email:</strong> smkn1baureno@gmail.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Hainif</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://www.instagram.com/hnifnipp/">Hanif</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

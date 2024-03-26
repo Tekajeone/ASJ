@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tutorial install Samba Server</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Logo TKJ .png" rel="icon">
+  <link href="assets/img/Logo TKJ .png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Logo TKJ .png" alt="">
+        <span>TKJ SMKBA</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="index.html">Beranda</a></li>
+           
+          <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="blog.html">Materi</a></li>
+              <li><a href="tt.html">Tutorial</a></li>
+              </ul>
+    
+
+          <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
+           
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="blog.html">Tutorial</a></li>
+          <li>Samba Server</li>
+        </ol>
+        <h2>Samba Server</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+              <div class="entry-img">
+                <img src="assets/img/blog/sambaa.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="blog-single.html">Cara Install dan Konfigurasi DHCP Server Pada Debian 10</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+
+                <h3>Apa Itu Samba Server?</h3>
+
+                
+                <p>
+                  Samba Server adalah software yang ada pada  sistem operasi linux yang bisa digunakan untuk melakukan sharing file dan printer pada jaringan yang menggunakan system operasi windows dan linux. Nama samba diambil dari SMB yaitu sebuah protocol yang mengatur metode sharing file dan printer pada windows.
+                </p>
+
+                <h3>Proses Konfigurasi Samba Server Debian 10:</h3>
+                <p>
+                  1. Login menggunakan User root
+                </p>
+                <img src="assets/img/samba/ss1.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  2. Konfigurasi IP address terlebih dahulu dengan mengetikkanperintah 
+                  <span style="background-color: #fcff01;"><b>nano /etc/network/interfaces</b></span>
+                </p>
+                <img src="assets/img/samba/ss2.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  3. Setelah masuk ke konfigurasinya, buatlah konfigurasi seperti gambar di bawah ini. Setelah selesai konfigurasi simpan dengan menekan tombol 
+                  <span style="background-color: #fcff01;"><b>Ctrl + O</b></span>
+                  dan keluar dari konfigurasi dengan menekan tombol 
+                  <b style="background-color: #fcff01;">Ctrl + X.</b>
+                </p>
+                <img src="assets/img/samba/ss3.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  4. Sebelum menginstall samba pastikan terlebih dahulu repository mengarah ke DVD binary 1. Cara memasukkan DVD binary 1 yaitu pilih icon cd yang berada di bagian bawah kanan.
+                </p>
+                 
+                <img src="assets/img/samba/ss4.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  5. Setelah menemukan icon cd tersebut kemudian klik kanan dan masukkan DVD Debian binary 1.
+                </p>
+                <img src="assets/img/samba/ss5.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  5. Jika ada notifikasi seperti di bawah ini, klik saja 
+                  <span style="background-color: #fcff01;"><b> Force Unmount.</b></span>
+                </p>
+                <img src="assets/img/samba/ss6.PNG" class="img-fluid" alt=""><br><br>
+                
+
+                <p>
+                  6. Kemudian kita install samba dengan mengetikkan perintah 
+                  <span style="background-color: #fcff01;"><b>apt-get install samba</b></span>
+                  . Jika ada pertanyaan <b style="background-color: #fcff01;">"y/n"</b>
+                  klik <b style="background-color: #fcff01;">"y"</b> kemudian enter.
+                </p>
+                <img src="assets/img/samba/ss7.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  7. Pada <span style="background-color: #fcff01;"><b>samba server and utilities</b></span>, pilih 
+                  <span style="background-color: #fcff01;"><b>no.</b></span>
+                </p>
+                <img src="assets/img/ssh/ss8.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  8. Jika sudah selesai menginstall samba, ulangi perintah <b style="background-color: #fcff01;">apt-get install samba</b>
+                  untuk memastikan apakah samba sudah berhasil terinstall atau belum, jika sudah maka akan ada tulisan 
+                  <b style="background-color: #fcff01;">0 upgrade, 0 newly installed, 0 to remove and 0 not upgrade.</b>
+                </p>
+                <img src="assets/img/samba/ss9.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  9. Buat folder yang akan di share dan atur juga hak aksesnya. Misalnya disini saya akan membuat folder dengan nama "Sharing"
+                  <div><b style="background-color: #fcff01;">mkdir /home/Sharing</b></div>
+                  <div><b style="background-color: #fcff01;">chmod 777 /home/Sharing</b></div>
+                </p>
+                <img src="assets/img/ssh/ss10.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  10. Setelah membuat direktori baru, kemudian masuk ke konfigurasi dengan mengetikkan perintah&nbsp;
+                  <div><span style="background-color: #fcff01;"><b>nano /etc/samba/smb.conf</b></span></div>
+                </p>
+                <img src="assets/img/samba/ss11.jpg" class="img-fluid" alt=""><br><br>
+
+                
+                <p>
+                  11. Kemudian setelah masuk ke konfigurasi, scroll kebawah dengan menekan tombol page down.Dan tuliskan konfigurasi berikut pada bagian yang paling bawah.
+                </p>
+                <div><b style="background-color: #fcff01;">[Sharing]</b></div>
+                <div><b style="background-color: #fcff01;">path = /home/Sharing</b></div>
+                <div><b style="background-color: #fcff01;">browseable = yes</b></div>
+                <div><b style="background-color: #fcff01;">writeable = yes</b></div>
+                <div><b style="background-color: #fcff01;">read only = yes</b></div>
+                <div><b style="background-color: #fcff01;">public = yes</b></div>
+                <p>jika sudah selesai, tekan tombol "Ctrl + X" jika ada pertanyaan y/n tekan "y" kemudian enter</p>
+                <img src="assets/img/samba/ss12.jpg" class="img-fluid" alt=""><br><br> 
+                <p>Penjelasan:</p>
+                <div class="separator" style="clear: both; text-align: left;"><i>[Sharing] adalah nama folder yang akan ditampilkan&nbsp;</i></div>
+                <div class="separator" style="clear: both; text-align: left;"><i>path = /home/Sharing adalah letak direktory yang akan di share</i></div>
+                <div class="separator" style="clear: both; text-align: left;"><i>browseable = yes artinya folder tersebut dapat dicari/diakses&nbsp;</i></div>
+                <div class="separator" style="clear: both; text-align: left;"><i>read only = yes artinya folder tersebut hanya bisa dibaca</i></div>
+                <div class="separator" style="clear: both; text-align: left;"><i>public = yes artinya agar folder tersebut bisa diakses oleh publik&nbsp;</i></div>
+                <div class="separator" style="clear: both; text-align: left;"><i>nb : sesuaikan konfigurasi ini sesuai kebutuhan</i></div>
+               
+                
+                <br>
+                <p>
+                  12. Setelah selesai konfigurasi jangan lupa untuk me-restart samba, dengan mengetikan perintah&nbsp;
+                  <div class="separator" style="clear: both; text-align: left;"><span style="background-color: #fcff01;"><b>/etc/init.d/samba-ad-dc restart.</b></span></div>
+                </p>
+                <img src="assets/img/samba/ss13.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  13. Selanjutnya bisa kita cek pada komputer client, tetapi sebelumnya kita harus setting IP address pada komputer client.
+                </p>
+                <img src="assets/img/samba/ss14.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  14. Kemudian akses file sharing dari server dengan tekan tombol <b>windows+R</b>, kemudian masukkan ip server
+                  <b style="background-color: #fcff01;"> \\192.168.10.1</b>
+                </p>
+                <img src="assets/img/samba/ss15.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  15. Bisa kita lihat bahwa folder yang kita sharing tadi sudah muncul. Itu artinya konfigurasi samba server telah berhasil kita lakukan.
+                </p> 
+                <img src="assets/img/samba/ss16.PNG" class="img-fluid" alt=""><br><br>
+
+                <i style="background-color: white; box-sizing: border-box; color: #212529; font-family: Rubik, sans-serif; font-size: 16px;">Sekian tutorial dari saya semoga bermanfaat, dan terimakasih telah berkunjung di blog saya dan jangan lupa kunjungi terus blog saya untuk mendapatkan informasi-informasi yang lebih bagus lagi dan lebih bermanfaat.......</i>
+
+              </div>
+
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="#">Business</a></li>
+                </ul>
+
+                <i class="bi bi-tags"></i>
+                <ul class="tags">
+                  <li><a href="#">Creative</a></li>
+                  <li><a href="#">Tips</a></li>
+                  <li><a href="#">SMKBISA</a></li>
+                </ul>
+              </div>
+
+            </article><!-- End blog entry -->
+
+            <div class="blog-author d-flex align-items-center">
+              <img src="assets/img/logo1.png" class="rounded-circle float-left" alt="">
+              <div>
+                <h4>Hainif</h4>
+                <div class="social-links">
+                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                </div>
+                <p>
+                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                </p>
+              </div>
+            </div><!-- End blog author bio -->
+
+            
+
+          </div><!-- End blog entries list -->
+
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">Pencarian</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+              <h3 class="sidebar-title">Kategori</h3>
+              <div class="sidebar-item categories">
+                <ul>
+                  <li><a href="#">Umum <span>(25)</span></a></li>
+                  <li><a href="#">Komputer <span>(12)</span></a></li>
+                  <li><a href="#"> Jaringan<span>(22)</span></a></li>
+                  <li><a href="#">kreatif <span>(8)</span></a></li>
+                  <li><a href="#">Pendidikan<span>(14)</span></a></li>
+                </ul>
+              </div><!-- End sidebar categories-->
+
+              <h3 class="sidebar-title">Postingan Populer</h3>
+              <div class="sidebar-item recent-posts">
+                <div class="post-item clearfix">
+                  <img src="assets/img/dns/bg.jpg" alt="">
+                  <h4><a href="tt-dns.html">Cara Install dan Konfigurasi DNS Server pada Debian 10</a></h4>
+                  <time datetime="2020-01-01">Okt 27, 2022</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/apc.jpg" alt="">
+                  <h4><a href="tt-apache.html">Konfigurasi Web Server Apache di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 18, 2023</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/maill.jpg" alt="">
+                  <h4><a href="tt-mail.html">Tutorial Konfigurasi Mail Server dan Web mail...</a></h4>
+                  <time datetime="2020-01-01">Jan 22, 2024</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="https://www.exabytes.co.id/blog/wp-content/uploads/2024/03/Apa-Itu-WordPress-Adalah.jpg" alt="">
+                  <h4><a href="tt-word.html">Cara install Wordpress di debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 27, 2024</time>
+                </div>
+
+
+                <div class="post-item clearfix">
+                  <img src="https://linuxways.net/wp-content/uploads/2023/08/how-to-install-webmin-on-debian-12-1020x600.jpg" alt="">
+                  <h4><a href="tt-webmin.html">Tutorial Install Webmin di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Nov 12, 2021</time>
+                </div>
+                
+              </div><!-- End sidebar recent posts-->
+
+              <h3 class="sidebar-title">Hastag</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><a href="#">IT</a></li>
+                  <li><a href="#">Windows</a></li>
+                  <li><a href="#">linux</a></li>
+                  <li><a href="#">Debian</a></li>
+                  <li><a href="#">Komputer</a></li>
+                  <li><a href="#">Jaringan</a></li>
+                  <li><a href="#">Teknologi</a></li>
+                  <li><a href="#">Komunikasi</a></li>
+                  <li><a href="#">ASJ</a></li> 
+                </ul>
+              </div><!-- End sidebar tags-->
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+            <h4> </h4>
+            <p>     </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/Logo TKJ .png" alt="">
+              <span>TKJ SMKBA</span>
+            </a>
+            <p>Pusat Keunggulan & Pelatihan, Berdasar Imtaq dan Iptek, Berdaya saing Global dan Berwirausaha, Berprofil Pancasila.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Link Tautan</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Role</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Software Engineer</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Hubungi Kami</h4>
+            <p>
+              Jl.Plumbungan <br>
+              Jawa Timur 62192<br>
+              Indonesia <br><br>
+              <strong>Phone:</strong> (0322) 459140<br>
+              <strong>Email:</strong> smkn1baureno@gmail.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Hainif</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://www.instagram.com/hnifnipp/">Hanif</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

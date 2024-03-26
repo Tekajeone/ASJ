@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tutorial install SSH Server</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Logo TKJ .png" rel="icon">
+  <link href="assets/img/Logo TKJ .png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Logo TKJ .png" alt="">
+        <span>TKJ SMKBA</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="index.html">Beranda</a></li>
+           
+          <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="blog.html">Materi</a></li>
+              <li><a href="tt.html">Tutorial</a></li>
+              </ul>
+    
+
+          <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
+           
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="blog.html">Tutorial</a></li>
+          <li>SSH</li>
+        </ol>
+        <h2>SSH</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+              <div class="entry-img">
+                <img src="assets/img/blog/sshhh.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="tt-remote.html">Konfigurasi SSH Server di Debian 10</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="tt-remote.html">Hainif</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="tt-remote.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  
+                </ul>
+              </div>
+
+              <div class="entry-content">
+
+                <h3> Apa Itu SSH ?</h3>
+
+                <p>
+                  <p>SSH adalah protokol untuk bertukar data secara aman antara dua komputer melalui jaringan. Setiap kali data dikirim oleh komputer ke jaringan, SSH secara otomatis mengenkripsi (mengacak) itu. Kemudian, ketika data mencapai penerima yang dituju, SSH secara otomatis mendekripsi (menguraikan) itu. Hasilnya adalah enkripsi transparan: pengguna dapat bekerja secara normal, tidak menyadari bahwa komunikasi mereka di-enkripsi dengan aman di jaringan.</p>
+                </p>
+                
+                <p>Kesimpulannya adalah, bahwa klien SSH berkomunikasi dengan server SSH melalui koneksi jaringan terenkripsi.</p>
+
+                <h3>Konfigurasai SSH Server di Debian 10</h3> 
+                <p>1. Buka OS Debian di VirtualBox, kemudian login dengan menggunakan user Root</p>
+
+                
+                <img src="assets/img/ssh/ss1.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  2. Kemudian Konfigurasi terlebih dahulu untuk IP Servernya dengan mengetikkan perintah 
+                  <span style="background-color: #fcff01;"><b>nano /etc/network/interfaces</b></span>
+                </p>
+                <img src="assets/img/ssh/ss2.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  3. Jika sudah masuk ke konfigurasi IP nya, kemudian tuliskan konfigurasi berikut:
+                  <div><b style="background-color: #fcff01;"># The primary network interface</b></div>
+                  <div><span style="background-color: #fcff01;"><b>auto enp0s3</b></span></div>
+                  <div><span style="background-color: #fcff01;"><b>iface enp0s3 inet static</b></span></div>
+                  <div>&nbsp; &nbsp; <span style="background-color: #fcff01;"><b>address 192.168.10.1</b></span><br></div>
+                  <div><span>&nbsp; &nbsp;<span style="background-color: #fcff01;"><b> netmask 255.255.255.0</b></span><br></span></div>
+                </p>
+                <div>Jika sudah selesai mengkonfigurasi kemudian simpan dengan menekan tombol <span style="background-color: #fcff01;"><b>Ctrl+O</b></span> dan keluar konfigurasi dengan menekan tombol <b style="background-color: #fcff01;">Ctrl+X.</b></div>
+                <br><img src="assets/img/ssh/ss3.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  4. Kemudian jangan lupa untuk me-restart konfigurasi SSH dengan mengetikkan perintah 
+                  <span style="background-color: #fcff01;"><b>/etc/init.d/networking restart.</b></span>
+                </p>
+                <img src="assets/img/ssh/ss4.jpg" class="img-fluid" alt=""><br><br>
+                <p>5. Kemudian cek IP apakah sudah berhasil atau belum, dengan mengetikkan perintah 
+                  <span style="background-color: #fcff01;"><b>ip a.</b></span>
+                </p>
+                <img src="assets/img/ssh/ss5.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  6. Sebelum install package openssh-server pastikan terlebih dahulu repository sudah mengarah ke DVD binary 1. Masukkan DVD binary 1 terlebih dahulu kemudian ketikkan perintah 
+                  <span style="background-color: #fcff01;"><b>apt-cdrom add.</b></span>
+                </p>
+                <img src="assets/img/ssh/ss6.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  7. Kemudian kita install package openssh-server dengan mengetikkan perintah 
+                  <span style="background-color: #fcff01;"><b>apt-get install openssh-server.</b></span>
+                  jika ada pertanyaan <span style="background-color: #fcff01;"><b>y/n </b></span>
+                  klik tombol<span style="background-color: #fcff01;"><b> y</b></span>
+                  kemudian enter.
+                </p>
+                <img src="assets/img/ssh/ss7.jpg" class="img-fluid" alt=""><br><br>
+                
+
+                <p>
+                  8. Untuk memastikan apakah ssh sudah terinstal dengan baik atau belum kita ketikkan kembali perintah&nbsp;
+                  <span style="background-color: #fcff01;"><b>apt-get install openssh-server.</b></span>
+                  &nbsp;jika ada tulisan <span style="background-color: #fcff01;"><b>0 upgrade, 0 newly installed, 0 to remove and 0 not upgraded.</b></span>
+                  berarti sudah terinstall dengan baik.
+                </p>
+                <img src="assets/img/ssh/ss9.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  9. Jika sudah, kemudian beralih ke komputer client. Konfigurasi IP addressnya terlebih dahulu.
+                </p>
+                <img src="assets/img/ssh/ss9.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  10. Selanjutnya buka aplikasi putty, kemudian masukkan ip address server pada bagian hostname.
+                </p>
+                <img src="assets/img/ssh/ss10.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  11. Jika ada pertanyaan seperti ini, klik saja yes.
+                </p>
+                <img src="assets/img/ssh/ss11.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  12. Login dengan menggunakan user biasa, jika tampilannya seperti ini, itu artinya proses instalasi ssh server di debian 10 telah berhasil.
+                </p>
+                <img src="assets/img/ssh/ss12.PNG" class="img-fluid" alt=""><br><br>
+
+                
+                <p>
+                  13. Kemudian kita coba login Root di PuTTY. Close jendela PuTTY kemudian masuk kembali dengan menggunakan user Root.
+
+                </p>
+                <img src="assets/img/ssh/ss13.jpg" class="img-fluid" alt=""><br><br> 
+               
+                <p>
+                  14. Untuk mengatasi hal tersebut kita kembali ke server debian kemudian konfigurasi ssh dengan mengetikkan perintah 
+                  <span style="background-color: #fcff01;"><b>nano /etc/ssh/sshd_config</b></span>
+                  . Setelah masuk ke konfigurasi kemudian cari kata 
+                  <span style="background-color: #fcff01;"><b>PermitRootLogin</b></span>
+                  . Setelah menemukan kata tersebut hapus tanda pagar yang ada di depan kata tersebut dan ubah katanya menjadi 
+                  <span style="background-color: #fcff01;"><b>PermitRootLogin yes</b></span>
+                  <i>PermitRootLogin yes berarti kita mengizinkan login dengan menggunakan user root, jika PermitRootLogin no berarti kita tidak bisa login dengan user root.</i>
+                </p>
+                <img src="assets/img/ssh/ss14.jpg" class="img-fluid" alt=""><br><br>
+                <tr><td class="tr-caption" style="text-align: center;">Sebelum</td></tr>
+
+                
+                <img src="assets/img/ssh/ss15.jpg" class="img-fluid" alt=""><br><br>
+                <tr><td class="tr-caption" style="text-align: center;">Sesudah<br></td></tr>
+
+                <p>
+                  15. Kemudian simpan konfigurasi dengan menekan tombol 
+                  <span style="background-color: #fcff01;"><b>Ctrl + O</b></span>
+                  dan keluar konfigurasi dengan menekan tombol 
+                  <b style="background-color: #fcff01;">Ctrl + X</b>
+                  . Setelah itu jangan lupa untuk me-restart setiap selesai konfigurasi dengan mengetikkan perintah 
+                  <b style="background-color: #fcff01;">/etc/init.d/ssh restart.</b>
+                </p>
+                <img src="assets/img/ssh/ss16.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>
+                  16. Kemudian buka PuTTY dan Login dengan menggunakan user root.
+                </p> 
+                <img src="assets/img/ssh/ss17.PNG" class="img-fluid" alt=""><br><br>
+
+                
+                <i  >Sekian tutorial dari saya semoga bermanfaat, dan terimakasih telah berkunjung di blog saya dan jangan lupa kunjungi terus blog saya untuk mendapatkan informasi-informasi yang lebih bagus lagi dan lebih bermanfaat.......</i>
+                <br>
+              </div>
+
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="#">Business</a></li>
+                </ul>
+
+                <i class="bi bi-tags"></i>
+                <ul class="tags">
+                  <li><a href="#">Creative</a></li>
+                  <li><a href="#">Tips</a></li>
+                  <li><a href="#">SMKBISA</a></li>
+                </ul>
+              </div>
+
+            </article><!-- End blog entry -->
+
+            <div class="blog-author d-flex align-items-center">
+              <img src="assets/img/logo1.png" class="rounded-circle float-left" alt="">
+              <div>
+                <h4>Hainif</h4>
+                <div class="social-links">
+                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                </div>
+                <p>
+                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                </p>
+              </div>
+            </div><!-- End blog author bio -->
+
+            
+
+          </div><!-- End blog entries list -->
+
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">Pencarian</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+              <h3 class="sidebar-title">Kategori</h3>
+              <div class="sidebar-item categories">
+                <ul>
+                  <li><a href="#">Umum <span>(25)</span></a></li>
+                  <li><a href="#">Komputer <span>(12)</span></a></li>
+                  <li><a href="#"> Jaringan<span>(22)</span></a></li>
+                  <li><a href="#">kreatif <span>(8)</span></a></li>
+                  <li><a href="#">Pendidikan<span>(14)</span></a></li>
+                </ul>
+              </div><!-- End sidebar categories-->
+
+              <h3 class="sidebar-title">Postingan Populer</h3>
+              <div class="sidebar-item recent-posts">
+                <div class="post-item clearfix">
+                  <img src="https://caraguna.com/wp-content/uploads/2022/02/ftp.jpg" alt="">
+                  <h4><a href="tt-ftp.html">Install dan Konfigurasi FTP Server di Debian 10</a></h4>
+                  <time datetime="2020-01-01"> Apr 21, 2022</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/sambaa.jpg" alt="">
+                  <h4><a href="tt-samba.html">Konfigurasi Samba Server di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 1, 2020</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/dns/bg.jpg" alt="">
+                  <h4><a href="tt-dns.html">Cara Install dan Konfigurasi DNS Server pada Debian 10</a></h4>
+                  <time datetime="2020-01-01">Mei 15, 2023</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/apc.jpg" alt="">
+                  <h4><a href="tt-apache.html">Konfigurasi Web Server Apache di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jun 13, 2023</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/maill.jpg" alt="">
+                  <h4><a href="tt-mail.html">Tutorial Konfigurasi Mail Server dan Web mail...</a></h4>
+                  <time datetime="2020-01-01">Jan 22, 2024</time>
+                </div>
+
+                
+
+              </div><!-- End sidebar recent posts-->
+
+              <h3 class="sidebar-title">Hastag</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><a href="#">IT</a></li>
+                  <li><a href="#">Windows</a></li>
+                  <li><a href="#">linux</a></li>
+                  <li><a href="#">Debian</a></li>
+                  <li><a href="#">Komputer</a></li>
+                  <li><a href="#">Jaringan</a></li>
+                  <li><a href="#">Teknologi</a></li>
+                  <li><a href="#">Komunikasi</a></li>
+                  <li><a href="#">ASJ</a></li> 
+                </ul>
+              </div><!-- End sidebar tags-->
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+            <h4> </h4>
+            <p>     </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/Logo TKJ .png" alt="">
+              <span>TKJ SMKBA</span>
+            </a>
+            <p>Pusat Keunggulan & Pelatihan, Berdasar Imtaq dan Iptek, Berdaya saing Global dan Berwirausaha, Berprofil Pancasila.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Link Tautan</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Role</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Software Engineer</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Hubungi Kami</h4>
+            <p>
+              Jl.Plumbungan <br>
+              Jawa Timur 62192<br>
+              Indonesia <br><br>
+              <strong>Phone:</strong> (0322) 459140<br>
+              <strong>Email:</strong> smkn1baureno@gmail.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Hainif</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://www.instagram.com/hnifnipp/">Hanif</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

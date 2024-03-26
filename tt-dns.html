@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Konfigurasi DNS Server di Debian 10</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/Logo TKJ .png" rel="icon">
+  <link href="assets/img/Logo TKJ .png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FlexStart
+  * Updated: Jan 29 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+   <!-- ======= Header ======= -->
+   <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/Logo TKJ .png" alt="">
+        <span>TKJ SMKBA</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="index.html">Beranda</a></li>
+           
+          <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="blog.html">Materi</a></li>
+              <li><a href="tt.html">Tutorial</a></li>
+              </ul>
+    
+
+          <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
+           
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+  
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="blog.html">Tutorial</a></li>
+          <li>DNS Server</li>
+        </ol>
+        <h2>  DNS Server</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+              <div class="entry-img">
+                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="blog-single.html">Cara Install dan Konfigurasi DHCP Server Pada Debian 10</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+
+                <h3>Apa Itu DNS?</h3>
+
+                <p>
+                  Domain Name System adalah suatu metode untuk mengkonversi IP address (numerik) sutau komputer ke dalam suatu nama domain (alphabetic), ataupun sebaliknya. Dengan adanya sistem tersebut, memudahkan kita dalam mengingat komputer tersebut. Misalnya, server Debian memiliki IP Address 192.168.20.1, namun pada umumnya orang tidak akan mudah mengingat IP address dalam bentuk numeric tersebut. Dengan adanya DNS Server, kita bisa mengakses halaman situs dari server Debian tersebut hanya dengan mengakses nama domain-nya, tanpa mengingat IP address dari komputer tersebut.
+                </p>
+                
+                <p>Pada tutorial konfigurasi DNS server pada debian 10 ini, akan digunakan konfigurasi IP Address sebagai berikut:</p>
+                <div style="text-align: left;"><b>IP Address : 192.168.20.1/24<br>Domain : www.tkj.com&nbsp;<br>Instalasi bind9 dan dnsutils</b></div>
+                <p><b>bind9</b> (Berkeley Internet Name Domain versi 9) adalah salah satu aplikasi linux yang sangat populer sebagai DNS Server, dan hampir semua distro linux menggunakannya. Selain itu, dalam konfigurasinya pun cukup mudah dimengerti, khusunya bagi pemula awal.</p>
+
+               
+                <h3>Langkah-Langkah Konfigurasi </h3>
+                <p>
+                  <p>1.<span style="white-space: pre;">	</span>Login ke debian dengan menggunakan user root dan setelah itu kita setting IP untuk server terlebih dahulu dengan mengetikkan perintah <span style="background-color: #04ff00;">nano /etc/network/interfaces</span></p>
+                </p>
+                <img src="assets/img/dns/ss1.png" class="img-fluid" alt=""><br><br>
+
+                <p>2.<span style="white-space: pre;">	</span>Jika sudah, restart IP dengan perintah <span style="background-color: #04ff00;">/etc/init.d/networking restart</span>. Dan cek konfigurasi IP sudah berhasil atau belum dengan perintah <span style="background-color: #04ff00;">ip a</span>.</p>
+                <img src="assets/img/dns/ss2.png" class="img-fluid" alt=""><br><br>
+
+                <p>3.<span style="white-space: pre;">	</span>Jika berhasil, maka langkah selanjutnya <span style="background-color: #ffa400;">masukkan DVD 2</span> dan install bind9, dengan perintah <span style="background-color: #04ff00;">apt-get install bind9</span>. Jika ada pertanyaan [y/n] klik <span style="background-color: #04ff00;">Y kemudian enter</span></p>
+                <img src="assets/img/dns/ss3.png" class="img-fluid" alt=""><br><br>
+
+                <p>4.<span style="white-space: pre;">	</span>Jika terjadi error seperti gambar dibawah ini, jangan panik. Kita ketikkan perintah <span style="background-color: #04ff00;">apt --fix-broken install</span>. Tetapi jika tidak ada berarti instalasi berhasil.</p>
+                <img src="assets/img/dns/ss4.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>5.<span style="white-space: pre;">	</span>Kemudian ada perintah untuk memasukkan DVD binary 1 seperti gambar dibawah ini, masukkan DVD binary 1 kemudian enter.</p>>
+                <img src="assets/img/dns/ss5.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>6.<span style="white-space: pre;">	</span> Untuk memastikan instalasi sudah berhasil atau belum kita ketikkan ulang perintah <span style="background-color: #04ff00;">apt-get insatll bind9</span>. Jika ada keterangan 0 upgrade, 0 newly installed, 0 to remove and 0 not upgraded. Seperti gambar dibawah ini berarti instalasi telah berhasil.</p>
+                <img src="assets/img/dns/ss6.PNG" class="img-fluid" alt=""><br><br>
+                
+
+                <p>7.<span style="white-space: pre;">	</span>Kemudian masuk ke directory bind dengan perintah <span style="background-color: #04ff00;">cd /etc/bind</span>.&nbsp;</p>
+                <img src="assets/img/dns/ss7.png" class="img-fluid" alt=""><br><br>
+                <p>Berikut file-file penting yang akan kita konfigurasi dalam DNS Server</p>
+                <p>a.<span style="white-space: pre;">	</span>File forward</p>
+                <p>b.<span style="white-space: pre;">	</span>File reverse</p>
+                <p>c.<span style="white-space: pre;">	</span>named.conf.options</p>
+                <p>d.<span style="white-space: pre;">	</span>named.conf.local</p>
+                <p>e.<span style="white-space: pre;">	</span>/etc/resolv.conf&nbsp;</p>
+                <p>8.<span style="white-space: pre;">	</span>Membuat file forward, dengan cara copy file db.local dengan perintah <span style="background-color: #04ff00;">cp db.local db.tkj</span>. kemudian konfigurasi file db.tkj dengan perintah <span style="background-color: #04ff00;">nano db.tkj</span>. Lakukan konfigurasi seperti gambar dibawah ini.</p>
+                <img src="assets/img/dns/ss8.png" class="img-fluid" alt=""><br><br>
+
+                <p>File forward berfungsi untuk konversi dari DNS menjadi IP Address. Misalnya www.tkj.com melalui Web Browser, maka akan muncul website dari server debian.</p>
+                <p>9.<span style="white-space: pre;">	</span>Kemudain membuat file reverse, dengan cara copy file db.127 dengan perintah <span style="background-color: #04ff00;">cp db.127 db.192</span>. kemudian lakukan konfigurasi pada file db.192 dengan perintah <span style="background-color: #04ff00;">nano db.192</span>, lakukan konfigurasi seperti gambar dibawah ini.</p>
+                <img src="assets/img/dns/ss9.png" class="img-fluid" alt=""><br><br>
+
+                 
+                 
+                <p>Reverse berfungsi untuk konfersi IP Address menjadi DNS. Misalnya jika kita mengetikkan ip address http://192.168.20.1 pada web browser, secara otomatis akan redirect ke alamat www.tkj.com.&nbsp;</p>
+                <p>10.<span style="white-space: pre;">	</span> Kemudian membuat Zone Domain. Edit tambahkan konfigurasi untuk forward dan reverse pada file named.conf.options dan named.conf.local.&nbsp;</p>
+                <div class="separator" style="clear: both; text-align: left;">Langkah pertama kita konfigurasi pada file named.conf.options dengan perintah <span style="background-color: #04ff00;">nano named.conf.options</span>. kemudian ubah konifgurasinya sepeti gambar dibawah ini yang diberi tanda kotak merah.</div>
+
+                <img src="assets/img/dns/ss10.jpg" class="img-fluid" alt=""><br><br>
+                <p>Kemudian langkah kedua kita konfigurasi named.conf.local dengan perintah <span style="background-color: #04ff00;">nano named.conf.local</span>. kemudian tambahkan konfigurasinya seperti gambar dibawah ini yang diberi tanda kotak merah.</p>
+                <img src="assets/img/dns/ss11.jpg" class="img-fluid" alt=""><br><br>
+
+                <p>Bagian ini adalah yang terpenting, kita akan menentukan nama domain dari server debian. Kita boleh membuat zone domain menggunakan TLD (Top Level Domain) hanya pada jaringan local (tanpa koneksi internet). Karena sudah ada organisasi khusus mengatur domain TLD tersebut, contohnya PANDI (Pengelola Name Domain Internet Indonesia)&nbsp;</p>
+                <p>11.<span style="white-space: pre;">	</span>Menambah dns-name server. Tambahkan dns dan nameserver dari server Debian tersebut pada file resolv.conf. agar dapat diakses melalui komputer kita. Ketikkan perintah <span style="background-color: #04ff00;">nano /etc/resolv.conf</span>. Lakukan konfigurasi seperti gambar dibawah ini.</p>
+                <img src="assets/img/dns/ss14 (1).PNG" class="img-fluid" alt=""><br><br>
+
+                <p>12.<span style="white-space: pre;">	</span>Setelah selesai konfigurasi restart bind9 dengan perintah <span style="background-color: #04ff00;">/etc/init.d/bind9 restart</span>. Jika sudah OK berarti sudah berhasil.&nbsp; Jika belum silahkan teliti lagi pada konfigurasi network atau konfigurasi debiannnya.</p>
+                <img src="assets/img/dns/ss13.PNG" class="img-fluid" alt=""><br><br>
+
+                <p>13.<span style="white-space: pre;">	</span>Sebelum melakukan pengujian DNS Server nya, kita install terlebih dahulu dnsutils dengan perintah <span style="background-color: #04ff00;">apt-get install dnsutils</span>. Jika ada pertanyaan [y/n] tekan <span style="background-color: #04ff00;">Y lalu enter.</span></p>
+                <img src="assets/img/dns/ss14.png" class="img-fluid" alt=""><br><br>
+
+                <p>14.<span style="white-space: pre;">	</span>Kemudian lakukan pengujian dengan perintah <span style="background-color: #04ff00;">nslookup tkj.com</span> dan <span style="background-color: #04ff00;">nslookup 192.168.20.1</span>. jika berhasil maka akan seperti gambar dibawah ini.</p>
+                 
+                  <img src="assets/img/dns/ss15.png" class="img-fluid" alt=""><br><br>
+                  <p>15.<span style="white-space: pre;">	</span>Kemudian kita coba lakukan ping dari PC host, langkah pertama atur ip terlebih dahulu pada PC host/client pada bagian Host-Only Adapter. Dan pastikan untuk network Server debian-nya Host-Only Adapter.&nbsp;</p>
+                  <img src="assets/img/dns/ss16.PNG" class="img-fluid" alt=""><br><br>
+                  <p>16.<span style="white-space: pre;">	</span>Jika sudah, ping melalui cmd dengan perintah <span style="background-color: #04ff00;">ping tkj.com</span> dan pastikan hasilnya reply ..... time&lt;xxx TTL=xx</p>
+                  <img src="assets/img/dns/ss17.PNG" class="img-fluid" alt=""><br><br>
+                  <p>Konfigurasi DNS Server menggunakan bind9 pada sistem operasi Debian 10 Buster telah berhasil dikonfigurasi, Selamat mencoba.!</p>
+                  <p>Sekian tutorial ini, semoga bermanfaat ......</p>
+
+              </div>
+
+              <div class="entry-footer">
+                <i class="bi bi-folder"></i>
+                <ul class="cats">
+                  <li><a href="#">Business</a></li>
+                </ul>
+
+                <i class="bi bi-tags"></i>
+                <ul class="tags">
+                  <li><a href="#">Creative</a></li>
+                  <li><a href="#">Tips</a></li>
+                  <li><a href="#">SMKBISA</a></li>
+                </ul>
+              </div>
+
+            </article><!-- End blog entry -->
+
+            <div class="blog-author d-flex align-items-center">
+              <img src="assets/img/logo1.png" class="rounded-circle float-left" alt="">
+              <div>
+                <h4>Hainif</h4>
+                <div class="social-links">
+                  <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                </div>
+                <p>
+                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                </p>
+              </div>
+            </div><!-- End blog author bio -->
+
+            
+
+          </div><!-- End blog entries list -->
+
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+              <h3 class="sidebar-title">Pencarian</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->
+
+              <h3 class="sidebar-title">Kategori</h3>
+              <div class="sidebar-item categories">
+                <ul>
+                  <li><a href="#">Umum <span>(25)</span></a></li>
+                  <li><a href="#">Komputer <span>(12)</span></a></li>
+                  <li><a href="#"> Jaringan<span>(22)</span></a></li>
+                  <li><a href="#">kreatif <span>(8)</span></a></li>
+                  <li><a href="#">Pendidikan<span>(14)</span></a></li>
+                </ul>
+              </div><!-- End sidebar categories-->
+
+              <h3 class="sidebar-title">Postingan Populer</h3>
+              <div class="sidebar-item recent-posts">
+                
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/apc.jpg" alt="">
+                  <h4><a href="tt-apache.html">Konfigurasi Web Server Apache di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 18, 2023</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/maill.jpg" alt="">
+                  <h4><a href="tt-mail.html">Tutorial Konfigurasi Mail Server dan Web mail...</a></h4>
+                  <time datetime="2020-01-01">Jan 22, 2024</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="https://linuxways.net/wp-content/uploads/2023/08/how-to-install-webmin-on-debian-12-1020x600.jpg" alt="">
+                  <h4><a href="tt-webmin.html">Tutorial Install Webmin di Debian 10</a></h4>
+                  <time datetime="2020-01-01">Nov 12, 2021</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="https://www.exabytes.co.id/blog/wp-content/uploads/2024/03/Apa-Itu-WordPress-Adalah.jpg" alt="">
+                  <h4><a href="tt-word.html">Cara install Wordpress di debian 10</a></h4>
+                  <time datetime="2020-01-01">Jan 27, 2024</time>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="assets/img/blog/maill.jpg" alt="">
+                  <h4><a href="tt-mail.html">Tutorial Konfigurasi Mail Server dan Web mail...</a></h4>
+                  <time datetime="2020-01-01">Jan 22, 2024</time>
+                </div>
+                
+              </div><!-- End sidebar recent posts-->
+
+              <h3 class="sidebar-title">Hastag</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  <li><a href="#">IT</a></li>
+                  <li><a href="#">Windows</a></li>
+                  <li><a href="#">linux</a></li>
+                  <li><a href="#">Debian</a></li>
+                  <li><a href="#">Komputer</a></li>
+                  <li><a href="#">Jaringan</a></li>
+                  <li><a href="#">Teknologi</a></li>
+                  <li><a href="#">Komunikasi</a></li>
+                  <li><a href="#">ASJ</a></li> 
+                </ul>
+              </div><!-- End sidebar tags-->
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+            <h4> </h4>
+            <p>     </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/Logo TKJ .png" alt="">
+              <span>TKJ SMKBA</span>
+            </a>
+            <p>Pusat Keunggulan & Pelatihan, Berdasar Imtaq dan Iptek, Berdaya saing Global dan Berwirausaha, Berprofil Pancasila.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Link Tautan</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Role</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
+               
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Software Engineer</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Hubungi Kami</h4>
+            <p>
+              Jl.Plumbungan <br>
+              Jawa Timur 62192<br>
+              Indonesia <br><br>
+              <strong>Phone:</strong> (0322) 459140<br>
+              <strong>Email:</strong> smkn1baureno@gmail.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Hainif</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://www.instagram.com/hnifnipp/">Hanif</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
